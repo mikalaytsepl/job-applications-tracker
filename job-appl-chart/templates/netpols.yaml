@@ -10,7 +10,14 @@ spec:
     matchLabels:
       app: {{ .Values.front.name }}
   policyTypes:
+    - Ingress
     - Egress
+
+  ingress: 
+    - from: 
+        - podSelector:
+            matchLabels:
+              app: {{.Values.ingr.name}}
   egress:
     - to:
         - podSelector:
